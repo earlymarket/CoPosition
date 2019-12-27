@@ -5,7 +5,10 @@ class Users::ApprovalsController < ApplicationController
   def new
     @approvals_presenter = Users::ApprovalsPresenter.new(current_user, params)
     @approval = Approval.new
-    gon.push(devs: (Developer.all - current_user.developers).pluck(:company_name))
+    gon.push(
+      devs: (Developer.all - current_user.developers).pluck(:company_name),
+      users: User.pluck(:email).map { |email| Digest::MD5.hexdigest(email) }
+    )
   end
 
   def add

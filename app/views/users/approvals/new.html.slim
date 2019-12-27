@@ -8,4 +8,4 @@ br/
     .col.s12.input-field.search
       = f.text_field :approvable, @approvals_presenter.input_options
   = f.hidden_field :approvable_type, value: @approvals_presenter.approvable_type
-  = f.button "Add", class: "waves-effect waves-light btn", type: "submit"
+  = f.button "Add", class: "waves-effect waves-light btn", id: "add_approvable", type: "submit"

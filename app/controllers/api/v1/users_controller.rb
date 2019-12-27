@@ -10,7 +10,7 @@ class Api::V1::UsersController < Api::ApiController
   end
 
   def index
-    @users = @dev.users.active_users.public_info
+    @users = req_from_coposition_app? ? @dev.users.active_users.public_info : User.all
     respond_with @users
   end
 
